@@ -50,8 +50,6 @@
                                         ;(unpin! t)
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
 
-(unless (package-installed-p 'prettier)
-  (package-refresh-contents)
-  (package-install 'prettier))
-
-(require 'prettier)
+(package! prettier)
+(package! auto-rename-tag
+  :recipe (:host github :repo "Zer0xTJ/auto-rename-tag"))

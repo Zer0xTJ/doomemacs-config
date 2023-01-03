@@ -67,11 +67,13 @@ there's a region, all lines that region covers will be duplicated."
 (add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
 
 
-(setq gc-cons-threshold 800000000)
+(setq gc-cons-threshold 100000000)
 (run-with-idle-timer 5 t #'garbage-collect)
-(setq read-process-output-max (* 5 1024 1024)) ;; 1mb
+(setq read-process-output-max (* 4 1024 1024)) ;; 1mb
 ;;
 (add-hook 'prog-mode-hook 'subword-mode)
+(add-hook 'web-mode-hook 'auto-rename-tag-mode)
+(add-hook 'rjsx-mode-hook 'auto-rename-tag-mode)
 ;;(add-hook 'window-setup-hook #'+treemacs/toggle 'append)
 
 ;; treemacs  config
@@ -125,7 +127,7 @@ there's a region, all lines that region covers will be duplicated."
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type relative)
+(setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
