@@ -51,5 +51,7 @@
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
 
 (package! prettier)
+(package! rg)
+(package! ripgrep)
 (package! auto-rename-tag
   :recipe (:host github :repo "Zer0xTJ/auto-rename-tag"))

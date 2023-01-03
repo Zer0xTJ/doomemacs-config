@@ -40,6 +40,10 @@ there's a region, all lines that region covers will be duplicated."
       (goto-char (+ origin (* (length region) arg) arg)))))
 
 (global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
+(global-set-key (kbd "C-c p ,") 'projectile-ripgrep)
+(global-set-key (kbd "C-c =") #'+format/buffer)
+(global-set-key (kbd "C-c l") 'avy-copy-line)
+(global-set-key (kbd "C-c r") 'avy-copy-region)
 
 
 (use-package prettier
@@ -67,9 +71,9 @@ there's a region, all lines that region covers will be duplicated."
 (add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
 
 
-(setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold 1000000000)
 (run-with-idle-timer 5 t #'garbage-collect)
-(setq read-process-output-max (* 4 1024 1024)) ;; 1mb
+(setq read-process-output-max (* 8 1024 1024)) ;; 1mb
 ;;
 (add-hook 'prog-mode-hook 'subword-mode)
 (add-hook 'web-mode-hook 'auto-rename-tag-mode)
