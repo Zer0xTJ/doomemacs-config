@@ -39,6 +39,9 @@ there's a region, all lines that region covers will be duplicated."
         (setq end (point)))
       (goto-char (+ origin (* (length region) arg) arg)))))
 
+(global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
+
+
 (use-package prettier
   :hook ((typescript-mode . prettier-mode)
          (js-mode . prettier-mode)
