@@ -18,6 +18,27 @@
 
 ;; (require 'prettier)
 ;;
+
+(defun duplicate-current-line-or-region (arg)
+  "Duplicates the current line or region ARG times.
+If there's no region, the current line will be duplicated. However, if
+there's a region, all lines that region covers will be duplicated."
+  (interactive "p")
+  (let (beg end (origin (point)))
+    (if (and mark-active (> (point) (mark)))
+        (exchange-point-and-mark))
+    (setq beg (line-beginning-position))
+    (if mark-active
+        (exchange-point-and-mark))
+    (setq end (line-end-position))
+    (let ((region (buffer-substring-no-properties beg end)))
+      (dotimes (i arg)
+        (goto-char end)
+        (newline)
+        (insert region)
+        (setq end (point)))
+      (goto-char (+ origin (* (length region) arg) arg)))))
+
 (use-package prettier
   :hook ((typescript-mode . prettier-mode)
          (js-mode . prettier-mode)
@@ -31,7 +52,7 @@
 
 ;;(add-hook 'after-init-hook #'global-prettier-mode)
 
-(global-set-key (kbd "C-x j") 'avy-goto-char)
+;;(global-set-key (kbd "C-x j") 'avy-goto-char)
 (use-package! lsp-tailwindcss :init
               (setq lsp-tailwindcss-add-on-mode t))
 ;;(use-package! lsp-tailwindcss)
@@ -101,7 +122,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
