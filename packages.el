@@ -55,3 +55,6 @@
 (package! ripgrep)
 (package! auto-rename-tag
   :recipe (:host github :repo "Zer0xTJ/auto-rename-tag"))
+
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))

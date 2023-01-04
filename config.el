@@ -19,6 +19,37 @@
 ;; (require 'prettier)
 ;;
 
+(setq web-mode-enable-css-colorization t)
+(setq-default
+ ;; js2-mode
+ js2-basic-offset 2
+ js-indent-level 2
+ ;; ts & tsx
+ typescript-indent-level 2
+ ;; web-mode
+ css-indent-offset 2
+ rjsx-mode-indent-level 2
+ web-mode-enable-auto-closing t
+ web-mode-auto-quote-style nil
+ web-mode-markup-indent-offset 2
+ web-mode-css-indent-offset 2
+ web-mode-code-indent-offset 2
+ web-mode-attr-indent-offset 2)
+
+;; for .ts, i use prettier
+(setq-hook! 'typescript-mode-hook +format-with-lsp nil)
+;; for .tsx, i use lsp for formatting, so this is not needed
+(setq-hook! 'typescript-tsx-mode-hook +format-with-lsp nil)
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (("C-TAB" . 'copilot-accept-completion-by-word)
+         ("C-<tab>" . 'copilot-accept-completion-by-word)
+         :map copilot-completion-map
+         ("<tab>" . 'copilot-accept-completion)
+         ("TAB" . 'copilot-accept-completion)))
+(setq auto-save-default nil)
 (defun duplicate-current-line-or-region (arg)
   "Duplicates the current line or region ARG times.
 If there's no region, the current line will be duplicated. However, if
@@ -49,6 +80,7 @@ there's a region, all lines that region covers will be duplicated."
 (use-package prettier
   :hook ((typescript-mode . prettier-mode)
          (js-mode . prettier-mode)
+         (typescript-tsx-mode . prettier-mode)
          (rjsx-mode . prettier-mode)
          (json-mode . prettier-mode)
          (yaml-mode . prettier-mode)
@@ -65,7 +97,6 @@ there's a region, all lines that region covers will be duplicated."
 ;;(use-package! lsp-tailwindcss)
 ;;(add-to-list 'lsp-language-id-configuration '(".*\\.erb$" . "html" . "jsx" . "tsx")
 
-(when window-system (set-fontset-font "fontset-default" '(#x600 . #x6ff) "Tahoma"))
 (setq lsp-idle-delay 0.500)
 (setq lsp-log-io nil)
 (add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
@@ -169,3 +200,6 @@ there's a region, all lines that region covers will be duplicated."
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+;;
+
+(when window-system (set-fontset-font "fontset-default" '(#x600 . #x6ff) "Tahoma"))
