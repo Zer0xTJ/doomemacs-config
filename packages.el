@@ -51,6 +51,7 @@
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
 
 (package! prettier)
+(package! pyenv-mode)
 (package! rg)
 (package! ripgrep)
 (package! auto-rename-tag
@@ -58,3 +59,4 @@
 
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+(package! elpy)
