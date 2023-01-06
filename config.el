@@ -213,3 +213,5 @@ there's a region, all lines that region covers will be duplicated."
     (treemacs-filewatch-mode t)
     )
   ) ;; treemacs config end
+
+;;
