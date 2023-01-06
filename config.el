@@ -35,7 +35,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "MonacoBSemi" :size 13 :weight 'normal)
+(setq doom-font (font-spec :family "MonacoBSemi" :size 13 :weight 'bold)
       doom-variable-pitch-font (font-spec :family "MonacoBSemi" :size 13))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
