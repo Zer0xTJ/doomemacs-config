@@ -166,6 +166,7 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "C-c =") #'+format/buffer)
 (global-set-key (kbd "C-c l") 'avy-copy-line)
 (global-set-key (kbd "C-c r") 'avy-copy-region)
+(global-set-key (kbd "C-c c") 'copilot-accept-completion)
 
 
 (use-package prettier
