@@ -35,8 +35,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "MonacoBSemi" :size 13 :weight 'bold)
-      doom-variable-pitch-font (font-spec :family "MonacoBSemi" :size 13))
+(setq doom-font (font-spec :family "MonacoB" :size 13 :weight 'bold)
+      doom-variable-pitch-font (font-spec :family "MonacoB" :size 13))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -220,3 +220,14 @@ there's a region, all lines that region covers will be duplicated."
 ;; unity external:
 ;; emacsclient +"$(Line):$(Column)" $(File)
 (setenv "FrameworkPathOverride" "/lib/mono/4.5")
+
+
+;; windows shell
+;; https://emacs.stackexchange.com/questions/22049/git-bash-in-emacs-on-windows
+(prefer-coding-system 'utf-8)
+(defun git-bash () (interactive)
+       (let ((explicit-shell-file-name "C:/Program Files/Git/bin/bash"))
+         (call-interactively 'shell)))
+
+(setq explicit-shell-file-name "C:/Program Files/Git/bin/bash.exe")
+(setq explicit-bash.exe-args '("--login" "-i"))
