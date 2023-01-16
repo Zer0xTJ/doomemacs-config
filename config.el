@@ -35,8 +35,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "MonacoBSemi" :size 13 :weight 'bold)
-      doom-variable-pitch-font (font-spec :family "MonacoBSemi" :size 13))
+(setq doom-font (font-spec :family "MonacoB" :size 13 :weight 'bold)
+      doom-variable-pitch-font (font-spec :family "MonacoB" :size 13))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -215,4 +215,11 @@ there's a region, all lines that region covers will be duplicated."
     )
   ) ;; treemacs config end
 
-;;
+;; windows shell
+;; https://caiorss.github.io/Emacs-Elisp-Programming/Emacs_On_Windows.html#sec-1-6-2
+(defun run-powershell ()
+  "Run powershell"
+  (interactive)
+  (async-shell-command "c:/windows/system32/WindowsPowerShell/v1.0/powershell.exe"
+               nil
+               nil))
